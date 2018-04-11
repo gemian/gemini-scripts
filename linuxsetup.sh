@@ -6,8 +6,8 @@
 # Usage:
 # - Install debian linux for Gemini and boot to it
 # - Open xterm
-# - wget <url to this script>
-# - bash <name of this script>
+# - wget goo.gl/pmVUP5
+# - bash pmVUP5
 #
 # Stuff it does:
 # - Update system and install some useful debian packages
