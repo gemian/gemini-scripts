@@ -10,15 +10,17 @@
 # - bash pmVUP5
 #
 # Stuff it does:
+# - Sets a shell for gemini user to allow using terminals and ssh login
+# - Resizes the linux filesystem to use full partition space (more space)
 # - Update system and install some useful debian packages
 # - Sets up ssh server
-# - Sets a shell for gemini user to allow using terminals and ssh login
 # - Changes hostname to gemini (from localhost)
 # - Enables avahi-daemon for discovery on LAN
 # - Changes password for gemini user (for security)
 # 
 
 sudo usermod --shell /bin/bash gemini
+sudo resize2fs /dev/mmcblk0p29
 sudo apt update
 sudo apt dist-upgrade
 sudo apt -y install openssh-server avahi-daemon curl htop iproute2 systemd-sysv locales
@@ -40,6 +42,13 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 sudo passwd gemini
+fi
+
+read -p "Install Gnome desktop ? (y/n)" -n 1 -r
+echo 
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+sudo apt install task-gnome-desktop
 fi
 
 echo 
