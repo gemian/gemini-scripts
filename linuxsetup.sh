@@ -4,9 +4,18 @@
 # and installs packages to make it more usable.
 #
 # Usage:
-# - Install debian linux for Gemini and boot to it
-# - Open xterm
-# - wget goo.gl/pmVUP5
+# - Install Debian Linux for Gemini and boot to it
+# - Connect Gemini with USB cable to your Linux pc
+# - Connect Gemini to WiFI 
+#    * With connman gui on Gemini
+#    * OR with ssh console, see http://www.ev3dev.org/docs/tutorials/setting-up-wifi-using-the-command-line/
+# - Execute on your pc: 
+#   ssh -t gemini@10.15.19.82 "wget https://raw.githubusercontent.com/gemian/gemini-scripts/master/linuxsetup.sh ; bash linuxsetup.sh"
+#
+# Alternative (if you're on Windows or can't use ssh method for some other reason)
+#
+# - Open xterm on Gemini
+# - wget goo.gl/pmVUP5          (yes, this is not recommended)
 # - bash pmVUP5
 #
 # Stuff it does:
@@ -22,8 +31,8 @@
 sudo usermod --shell /bin/bash gemini
 sudo resize2fs /dev/mmcblk0p29
 sudo apt update
-sudo apt dist-upgrade
-sudo apt -y install openssh-server avahi-daemon curl htop iproute2 systemd-sysv locales
+sudo apt -y dist-upgrade
+sudo apt -y install openssh-server avahi-daemon curl htop iproute2 systemd-sysv locales iputils-ping
 
 read -p "Change hostname to gemini ? (y/n)" -n 1 -r
 echo
